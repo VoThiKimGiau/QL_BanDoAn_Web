@@ -1,5 +1,5 @@
 ﻿@model QL_BanDoAn.Models.Location
-
+@using System.Web.Routing
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-       <input type="number" name="id" id="id" hidden value="@Model.Id" />
+        <input type="number" name="id" id="id" hidden value="@Model.Id" />
 
         <div class="form-group">
             <label for="Loca">Location</label>
