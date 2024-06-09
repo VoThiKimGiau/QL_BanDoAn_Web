@@ -277,6 +277,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\PricesController.cs" />
     <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -312,6 +313,8 @@
     <Content Include="Views\Prices\Create.cshtml" />
     <Content Include="Views\Prices\Delete.cshtml" />
     <Content Include="Views\Prices\Edit.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

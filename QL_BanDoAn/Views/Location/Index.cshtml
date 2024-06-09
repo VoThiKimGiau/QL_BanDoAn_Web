@@ -1,0 +1,26 @@
+﻿@model List<QL_BanDoAn.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="text-center">Location</h2>
+<table class="table table-bordered w-75 m-auto mt-3">
+    <tr>
+        <th>Location</th>
+        <th>Active</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p>@Html.DisplayFor(model => item.Loc)</p>
+            </td>
+            <td>
+                <a href="/Location/Edit/@item.Id">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+

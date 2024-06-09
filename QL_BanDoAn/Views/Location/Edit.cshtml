@@ -1,0 +1,32 @@
+﻿@model QL_BanDoAn.Models.Location
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="text-center">Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Location", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       <input type="number" name="id" id="id" hidden value="@Model.Id" />
+
+        <div class="form-group">
+            <label for="Loca">Location</label>
+            <div class="col-md-10">
+                <input type="text" name="Loca" id="Loca" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <div class="row">
+                <a class="col-md-2 btn btn-danger w-auto" style="margin-left:40%" href="/Location/">Back to Location</a>
+                <input type="submit" value="Save" class="col-md-2 btn btn-outline-primary w-auto ms-5" />
+            </div>
+        </div>
+    </div>
+}
