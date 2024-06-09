@@ -14,6 +14,7 @@ using System.Web.Mvc;
 
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class TimeController : Controller
     {
 

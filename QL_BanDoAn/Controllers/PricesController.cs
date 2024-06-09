@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class PricesController : Controller
     {
         // GET: Prices

@@ -9,13 +9,13 @@ using System.Web.Mvc;
 
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
        
         // GET: Home
         public ActionResult Index()
         {
-           
             return View();
         }
     }

@@ -10,6 +10,7 @@ using QL_BanDoAn.Models;
 
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class LocationController : Controller
     {
         IFirebaseConfig config = new FireSharp.Config.FirebaseConfig

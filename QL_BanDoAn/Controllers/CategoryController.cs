@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using QL_BanDoAn.Controllers;
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         IFirebaseConfig config = new FirebaseConfig

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace QL_BanDoAn.Controllers
 {
+    [Authorize]
     public class FoodsController : Controller
     {
         IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
