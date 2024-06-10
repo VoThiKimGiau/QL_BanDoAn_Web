@@ -27,7 +27,6 @@
 
     @using (Html.BeginForm("Delete", "Prices", new { id = Model.Id }, FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
         <div class="form-group">
             <input type="submit" value="Delete" class="btn btn-danger" />
             <a href="/Prices/" class="btn btn-default">Cancel</a>

@@ -10,7 +10,6 @@
 <div class="container">
     @using (Html.BeginForm("Edit", "Time", FormMethod.Post))
     {
-        @Html.AntiForgeryToken()
         <div class="form-group">
             @Html.HiddenFor(model => model.Id)
             <label class="control-label">Value:</label>

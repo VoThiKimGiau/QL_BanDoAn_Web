@@ -19,7 +19,6 @@ namespace QL_BanDoAn.Models
         public int LocationId { get; set; }
         public int TimeId { get; set; }
         public int TimeValue { get; set; }
-
-
+        public int numberInCart { get; set; }
     }
 }

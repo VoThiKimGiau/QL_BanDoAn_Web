@@ -12,7 +12,6 @@ using System.Threading;
 using Firebase.Storage;
 using System.Threading.Tasks;
 
-
 namespace QL_BanDoAn.Controllers
 {
     [Authorize]
@@ -43,7 +42,7 @@ namespace QL_BanDoAn.Controllers
         }
 
         [HttpGet]
-        public ActionResult Detail(String id = "0")
+        public ActionResult Detail(String id)
         {
             client = new FireSharp.FirebaseClient(config);
             FirebaseResponse response = client.Get("Foods/" + id);
@@ -245,8 +244,14 @@ namespace QL_BanDoAn.Controllers
             foreach (var item in data)
             {
                 var food = JsonConvert.DeserializeObject<Foods>(JsonConvert.SerializeObject(item));
-                if (food.CategoryId == id)
-                    list.Add(food);
+                if (food == null)
+                    continue;
+                else
+                {
+                    if (food.CategoryId == id)
+                        list.Add(food);
+                }
+                
             }
 
             return View(list);

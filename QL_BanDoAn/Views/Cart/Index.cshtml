@@ -1,0 +1,43 @@
+﻿@model List<QL_BanDoAn.Models.Cart>
+
+@{
+    ViewBag.Title = "Invoices";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="text-center">Invoices</h2>
+
+<table class="table table-bordered w-75 m-auto mt-5">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Active</th>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => model[i].id)</td>
+            <td>@ViewBag.CusName[i]</td>
+            <td>@Html.DisplayFor(model => model[i].time)</td>
+            <td>$ @Html.DisplayFor(model => model[i].totalPrice)</td>
+
+            @{
+                if (!Model[i].status)
+                {
+                    <td>Not accepted yet</td>
+                }
+                else
+                {
+                    <td>Accepted</td>
+                }
+
+            }
+
+            <td><a href="/Cart/Detail/@Model[i].id/">Detail</a></td>
+        </tr>
+    }
+</table>
+

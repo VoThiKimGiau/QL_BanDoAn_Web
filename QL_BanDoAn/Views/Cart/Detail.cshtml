@@ -1,0 +1,101 @@
+﻿@model QL_BanDoAn.Models.Cart
+
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="text-center">Invoice</h2>
+<table class="table table-borderless w-25 ">
+    <tr>
+        <th colspan="2"></th>
+    </tr>
+    <tr>
+        <td class="fw-bold">Name</td>
+        <td>@ViewBag.Cus.name</td>
+    </tr>
+    <tr>
+        <td class="fw-bold">Email</td>
+        <td>@ViewBag.Cus.email</td>
+    </tr>
+    <tr>
+        <td class="fw-bold">Phone number</td>
+        <td>@ViewBag.Cus.phone</td>
+    </tr>
+    <tr>
+        <td class="fw-bold">Address</td>
+        <td>@ViewBag.Cus.address</td>
+    </tr>
+</table>
+
+<hr />
+<h6>Time: @Model.time</h6>
+@{if (Model.status)
+    {
+        <h6>Status: Accepted</h6>
+    }
+
+    else
+    {
+        <h6>Status: Not accepted yet</h6>
+    }
+}
+
+<table class="table table-bordered w-75 m-auto mt-3">
+    <tr>
+        <th>Food Name</th>
+        <th>Number</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var food in Model.listFood)
+    {
+        <tr>
+            <td>@food.Title</td>
+            <td>@food.numberInCart</td>
+            <td>$ @food.Price</td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="2">Thuế</td>
+        @{
+            double sum = 0.0;
+            foreach (var f in Model.listFood)
+            {
+                sum += f.Price * f.numberInCart;
+            }
+            double tax = Math.Round(sum * 0.02, 2);
+        }
+        <td>$ @tax</td>
+    </tr>
+    <tr>
+        <td colspan="2">Phí vận chuyển</td>
+        <td>$ 10</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="text-center text-danger fw-bold">Total Price</td>
+        <td class="text-danger fw-bold">$ @Model.totalPrice</td>
+    </tr>
+</table>
+
+<div class="row mt-3">
+    @{
+        if (Model.status)
+        {
+            <a href="/Cart/Index/" class="col-md-2 w-auto btn btn-outline-danger" style="margin-left:40%">Back to invoices</a>
+        }
+        else
+        {
+            using (Html.BeginForm("Edit", "Cart", FormMethod.Get))
+            {
+                <input type="number" id="id" name="id" hidden value="@Model.id" />
+
+                <a href="/Cart/Index/" class="col-md-2 w-auto btn btn-outline-danger" style="margin-left:40%">Back to invoices</a>
+                <input type="submit" value="Accept" class="col-md-2 w-auto ms-5 btn btn-outline-success" />
+            }
+
+        }
+    }
+</div>
+
