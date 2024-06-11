@@ -11,6 +11,7 @@ using Firebase.Auth;
 using System.Threading;
 using Firebase.Storage;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace QL_BanDoAn.Controllers
 {
@@ -259,12 +260,14 @@ namespace QL_BanDoAn.Controllers
         }
 
         private static string oldImagePath = "";
+        private static double star = 0;
         public ActionResult Edit(string id)
         {
             client = new FireSharp.FirebaseClient(config);
             FirebaseResponse response = client.Get("Foods/" + id);
             Foods data = response.ResultAs<Foods>();
             oldImagePath = data.ImagePath;
+            star = data.Star;
 
             FirebaseResponse response2 = client.Get("Category");
             var data2 = JsonConvert.DeserializeObject<List<Category>>(response2.Body);
@@ -295,8 +298,15 @@ namespace QL_BanDoAn.Controllers
             else
                 foods.ImagePath = oldImagePath;
 
+            double price;
+            if (double.TryParse(Request.Form["Price"], NumberStyles.Number, CultureInfo.InvariantCulture, out price))
+            {
+                foods.Price = price;
+            }
+
             foods.PriceId = await getPriceId(foods.Price);
             foods.TimeId = await getTimeId(foods.TimeValue);
+            foods.Star = star;
 
             client = new FireSharp.FirebaseClient(config);
             SetResponse response = client.Set("Foods/" + foods.Id, foods);
